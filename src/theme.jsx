@@ -16,6 +16,15 @@ const THEME = {
       text: "#AFAFAF",
       bg: "#F2F2F2",
     },
+    unchecked: {
+      bg: "#fff",
+      text: "#DBDBDB",
+    },
+    checked: {
+      bg: "#CFCFCF",
+      border: "#CFCFCF",
+      text: "#fff",
+    },
     border: "#D4D4D4",
   },
 };

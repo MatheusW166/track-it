@@ -1,8 +1,10 @@
 import styled from "styled-components";
 
 const CustomButtonStyle = styled.button`
-  background: ${({ theme }) => theme.accent};
-  color: ${({ theme }) => theme.overAccent};
+  background: ${({ theme, secondary }) =>
+    secondary ? theme.overAccent : theme.accent};
+  color: ${({ theme, secondary }) =>
+    secondary ? theme.accent : theme.overAccent};
   border-radius: 5px;
   height: 45px;
   cursor: pointer;

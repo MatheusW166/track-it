@@ -26,10 +26,14 @@ const CustomForm = styled.form`
   flex-direction: column;
   gap: 6px;
   width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 `;
 
 const CustomInput = styled.input`
+  width: 100%;
   height: 45px;
+  max-width: 400px;
   border: 1px solid ${({ theme }) => theme.input.border};
   border-radius: 5px;
   padding: 0 11px;
@@ -43,4 +47,31 @@ const CustomInput = styled.input`
   }
 `;
 
-export { CustomForm, CustomInput, RegisterContainer };
+const PageContainer = styled.main`
+  min-height: 100vh;
+  padding: calc(70px + 24px) 18px;
+  background: ${({ theme }) => theme.bgVariant};
+
+  p {
+    margin-top: 28px;
+    font-size: 18px;
+  }
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      font-size: 22px;
+      font-weight: 400;
+      color: ${({ theme }) => theme.accentVariant};
+    }
+    button {
+      width: 40px;
+      height: 35px;
+      font-size: 26px;
+    }
+  }
+`;
+
+export { PageContainer, CustomForm, CustomInput, RegisterContainer };
