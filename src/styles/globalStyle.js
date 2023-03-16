@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
     body {
         font-family: "Lexend Deca", sans-serif;
         color: ${({ theme }) => theme.textPrimary};
-        background-color: red;
     }
 `;
 

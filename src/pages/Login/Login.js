@@ -40,6 +40,7 @@ export default function LogIn({ setUser }) {
           name="email"
           type="email"
           placeholder="email"
+          data-test="email-input"
         />
         <CustomInput
           disabled={loading}
@@ -47,13 +48,16 @@ export default function LogIn({ setUser }) {
           name="password"
           type="password"
           placeholder="senha"
+          data-test="password-input"
         />
-        <CustomButton disabled={loading} type="submit">
+        <CustomButton dataTest="login-btn" disabled={loading} type="submit">
           Entrar
         </CustomButton>
       </CustomForm>
       <p>
-        <Link to={ROUTES.signUp}>Não tem uma conta? Cadastre-se!</Link>
+        <Link data-test="signup-link" to={ROUTES.signUp}>
+          Não tem uma conta? Cadastre-se!
+        </Link>
       </p>
     </RegisterContainer>
   );

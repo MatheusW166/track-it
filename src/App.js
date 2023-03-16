@@ -10,16 +10,7 @@ import TodayContext from "./context/today";
 import { useListToday } from "./hooks/trackItApiHooks";
 
 function App() {
-  const [user, setUser] = useState({
-    id: 8350,
-    name: "Matheus Wagners",
-    image:
-      "https://s2.glbimg.com/1o2J-rf2G9qtlQlm82gaq-mFBec=/0x129:1024x952/924x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2023/7/i/ME2AxRRoygUyFPCDe0jQ/3.png",
-    email: "matheuswagnerdossantos@outlook.com",
-    password: "123123123",
-    token:
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODM1MCwiaWF0IjoxNjc4OTI5Nzk4fQ.E4S83sz2w2jJFNT4RZQdNWTy_OLBvbchhnkXGuMcjqE",
-  });
+  const [user, setUser] = useState();
   const { today, setToday, refreshToday } = useListToday({
     token: user?.token,
   });

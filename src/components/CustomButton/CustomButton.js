@@ -5,10 +5,11 @@ export default function CustomButton({
   showLoading = true,
   children,
   disabled,
+  dataTest,
   ...props
 }) {
   return (
-    <CustomButtonStyle disabled={disabled} {...props}>
+    <CustomButtonStyle data-test={dataTest} disabled={disabled} {...props}>
       {disabled && showLoading ? <Loader /> : children}
     </CustomButtonStyle>
   );
