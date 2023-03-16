@@ -5,11 +5,21 @@ const HabitsListContainer = styled.div`
   flex-direction: column;
   gap: 10px;
   max-width: 500px;
+  width: 100%;
   margin: 20px auto;
+  position: relative;
+  flex: 1;
+
+  & > .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
 `;
 
 const HabitContainerForm = styled.form`
-  
+  width: 100%;
   max-width: 500px;
   background: ${({ theme }) => theme.bg};
   border-radius: 5px;
@@ -44,6 +54,7 @@ const HabitContainerForm = styled.form`
 
 const HabitContainer = styled.div`
   max-width: 500px;
+  width: 100%;
   height: 91px;
   background: ${({ theme }) => theme.bg};
   border-radius: 5px;
@@ -55,6 +66,13 @@ const HabitContainer = styled.div`
   h3 {
     font-size: 19px;
     font-weight: 400;
+  }
+
+  position: relative;
+  svg {
+    position: absolute;
+    right: 10px;
+    top: 10px;
   }
 `;
 

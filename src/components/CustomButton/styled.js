@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const CustomButtonStyle = styled.button`
   background: ${({ theme, secondary }) =>
-    secondary ? theme.overAccent : theme.accent};
+    secondary ? "transparent" : theme.accent};
   color: ${({ theme, secondary }) =>
     secondary ? theme.accent : theme.overAccent};
   border-radius: 5px;
@@ -12,7 +12,8 @@ const CustomButtonStyle = styled.button`
   max-width: 400px;
   position: relative;
   &:disabled {
-    background: ${({ theme }) => theme.accentOpacity};
+    background: ${({ theme, secondary }) => !secondary && theme.accentOpacity};
+    opacity: ${({ secondary }) => secondary && "0.6"};
   }
   .loader {
     width: 13px;

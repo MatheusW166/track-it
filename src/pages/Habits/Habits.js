@@ -5,7 +5,6 @@ import HabitsList from "../../components/HabitsList/HabitsList";
 import HabitForm from "../../components/HabitsList/HabitForm";
 import { useListHabits } from "../../hooks/trackItApiHooks";
 import UserContext from "../../context/user";
-import Loader from "../../components/Loader/Loader";
 
 const defaultForm = { name: "", days: [] };
 
@@ -45,7 +44,11 @@ export default function Habits() {
           onCancel={() => setShowRegisterHabit(false)}
         />
       )}
-      {loading ? <Loader isDarker={true} /> : <HabitsList habits={habits} />}
+      <HabitsList
+        loading={loading}
+        refreshHabits={refreshHabits}
+        habits={habits}
+      />
     </PageContainer>
   );
 }

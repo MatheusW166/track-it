@@ -43,7 +43,7 @@ const CustomInput = styled.input`
   }
   &:disabled {
     background: ${({ theme }) => theme.input.disabled.bg};
-    color: ${({ theme }) => theme.input.disabled.bg};
+    color: ${({ theme }) => theme.input.disabled.text};
   }
 `;
 
@@ -51,6 +51,9 @@ const PageContainer = styled.main`
   min-height: 100vh;
   padding: calc(70px + 24px) 18px;
   background: ${({ theme }) => theme.bgVariant};
+
+  display: flex;
+  flex-direction: column;
 
   p {
     margin-top: 28px;
@@ -71,14 +74,6 @@ const PageContainer = styled.main`
       height: 35px;
       font-size: 26px;
     }
-  }
-
-  & > .loader {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    background-color: #000;
-    transform: translate(-50%, -50%);
   }
 `;
 

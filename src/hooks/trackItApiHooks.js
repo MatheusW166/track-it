@@ -106,4 +106,29 @@ function useCreateHabit() {
   return { habit, loading, error, createHabit };
 }
 
-export { useLogin, useSignUp, useListHabits, useCreateHabit };
+function useDeleteHabit() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+
+  const deleteHabit = ({ id, token }, onSuccess, onError) => {
+    setLoading(true);
+    trackItApi
+      .deleteHabit({ id, token })
+      .then((data) => {
+        if (onSuccess) {
+          onSuccess(data);
+        }
+      })
+      .catch((err) => {
+        setError(err);
+        if (onError) {
+          onError(err);
+        }
+      })
+      .finally(() => setLoading(false));
+  };
+
+  return { loading, error, deleteHabit };
+}
+
+export { useLogin, useSignUp, useListHabits, useCreateHabit, useDeleteHabit };

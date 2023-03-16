@@ -1,8 +1,9 @@
 import { HabitsListContainer } from "./styled";
+import Loader from "../Loader/Loader";
 import Habit from "./Habit";
 
-export default function HabitsList({ habits }) {
-  if (habits.length === 0) {
+export default function HabitsList({ habits, refreshHabits, loading = false }) {
+  if (habits?.length === 0 && !loading) {
     return (
       <p>
         Você não tem nenhum hábito cadastrado ainda. Adicione um hábito para
@@ -13,9 +14,19 @@ export default function HabitsList({ habits }) {
 
   return (
     <HabitsListContainer>
-      {habits.map((h) => (
-        <Habit key={h.id} name={h.name} days={h.days} id={h.id} />
-      ))}
+      {loading ? (
+        <Loader isDarker={true} />
+      ) : (
+        habits.map((h) => (
+          <Habit
+            onDelete={refreshHabits}
+            key={h.id}
+            name={h.name}
+            days={h.days}
+            id={h.id}
+          />
+        ))
+      )}
     </HabitsListContainer>
   );
 }
