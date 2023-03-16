@@ -20,10 +20,9 @@ export default function WeekDaysButtons({
     <WeekDaysContainer>
       {Object.keys(weekdays).map((d) => {
         return (
-          <WeekDayCheckLabel key={d}>
+          <WeekDayCheckLabel data-test="habit-day" key={d}>
             {weekdays[d]}
             <input
-              data-test="habit-day"
               disabled={disabled}
               name="day"
               onChange={onChange}
