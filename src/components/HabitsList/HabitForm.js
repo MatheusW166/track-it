@@ -31,7 +31,7 @@ export default function HabitForm({
     const name = form["name"].value;
     const days = Array.from(form["day"])
       .filter((i) => i.checked)
-      .map((i) => i.value);
+      .map((i) => Number(i.value));
 
     if (!validateDays(days)) {
       return;

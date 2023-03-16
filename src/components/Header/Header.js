@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <HeaderStyle data-test="header">
       <h1>TrackIt</h1>
-      <UserAvatar src={user.image} />
+      <UserAvatar src={user?.image} />
     </HeaderStyle>
   );
 }
