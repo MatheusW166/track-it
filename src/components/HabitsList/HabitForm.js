@@ -24,6 +24,14 @@ export default function HabitForm({
     return true;
   }
 
+  function validateName(name) {
+    if (!name?.trim()) {
+      alert("Coloque um nome.");
+      return false;
+    }
+    return true;
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -32,6 +40,10 @@ export default function HabitForm({
     const days = Array.from(form["day"])
       .filter((i) => i.checked)
       .map((i) => Number(i.value));
+
+    if (!validateName(name)) {
+      return;
+    }
 
     if (!validateDays(days)) {
       return;
@@ -59,7 +71,6 @@ export default function HabitForm({
       data-test="habit-create-container"
       onSubmit={handleSubmit}>
       <CustomInput
-        required
         disabled={loading}
         onChange={(e) => setHabitForm({ ...habitForm, name: e.target.value })}
         value={habitForm.name}
