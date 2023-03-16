@@ -17,7 +17,7 @@ const ROUTES = {
 
 export { ROUTES };
 
-export default function MyRoutes() {
+export default function MyRoutes({ setUser }) {
   const { pathname } = useLocation();
 
   function isLoginOrSignUp() {
@@ -28,7 +28,7 @@ export default function MyRoutes() {
     <>
       {!isLoginOrSignUp() && <Header />}
       <Routes>
-        <Route path={ROUTES.login} element={<LogIn />} />
+        <Route path={ROUTES.login} element={<LogIn setUser={setUser} />} />
         <Route path={ROUTES.signUp} element={<SignUp />} />
         <Route path={ROUTES.habits} element={<Habits />} />
         <Route path={ROUTES.today} element={<Today />} />

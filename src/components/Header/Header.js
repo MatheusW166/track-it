@@ -1,11 +1,15 @@
 import UserAvatar from "./UserAvatar";
 import { HeaderStyle } from "./styled";
+import { useContext } from "react";
+import UserContext from "../../context/user";
 
 export default function Header() {
+  const user = useContext(UserContext);
+
   return (
     <HeaderStyle>
       <h1>TrackIt</h1>
-      <UserAvatar />
+      <UserAvatar src={user.image} />
     </HeaderStyle>
   );
 }

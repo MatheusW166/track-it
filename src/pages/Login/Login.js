@@ -1,29 +1,56 @@
 import Logo from "../../components/Logo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTES } from "../../routes";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { RegisterContainer, CustomForm, CustomInput } from "../../styled";
+import { useLogin } from "../../hooks/trackItApiHooks";
 
-export default function LogIn() {
+export default function LogIn({ setUser }) {
+  const { loading, login } = useLogin();
+  const navigate = useNavigate();
+
+  function onSuccess(user) {
+    setUser(user);
+    navigate(ROUTES.habits);
+  }
+
+  function onError(err) {
+    const serverError = err?.response?.data;
+    alert(
+      serverError.message || "Não foi possível fazer o login, tente novamente."
+    );
+  }
+
   function handleLogin(e) {
     e.preventDefault();
-    console.log("Login!");
+    const form = e.target;
+    const email = form["email"].value;
+    const password = form["password"].value;
+
+    login({ email, password }, onSuccess, onError);
   }
 
   return (
     <RegisterContainer>
       <Logo />
       <CustomForm onSubmit={handleLogin}>
-        <CustomInput required name="email" type="email" placeholder="email" />
         <CustomInput
+          disabled={loading}
+          required
+          name="email"
+          type="email"
+          placeholder="email"
+        />
+        <CustomInput
+          disabled={loading}
           required
           name="password"
           type="password"
           placeholder="senha"
         />
-        <Link to={ROUTES.habits}>
-          <CustomButton type="submit">Entrar</CustomButton>
-        </Link>
+        <CustomButton disabled={loading} type="submit">
+          Entrar
+        </CustomButton>
       </CustomForm>
       <p>
         <Link to={ROUTES.signUp}>Não tem uma conta? Cadastre-se!</Link>
