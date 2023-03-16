@@ -23,6 +23,7 @@ export default function WeekDaysButtons({
           <WeekDayCheckLabel key={d}>
             {weekdays[d]}
             <input
+              data-test="habit-day"
               disabled={disabled}
               name="day"
               onChange={onChange}

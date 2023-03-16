@@ -38,7 +38,9 @@ export default function Habits({ refreshToday }) {
     <PageContainer>
       <div className="title">
         <h2>Meus hábitos</h2>
-        <CustomButton onClick={() => setShowRegisterHabit(true)}>
+        <CustomButton
+          dataTest="habit-create-btn"
+          onClick={() => setShowRegisterHabit(true)}>
           +
         </CustomButton>
       </div>

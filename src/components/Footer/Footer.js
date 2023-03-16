@@ -13,12 +13,16 @@ export default function Footer() {
 
   return (
     <FooterStyle>
-      <nav>
-        <Link to={ROUTES.habits}>Hábitos</Link>
+      <nav data-test="menu">
+        <Link data-test="habit-link" to={ROUTES.habits}>
+          Hábitos
+        </Link>
         <TodayItem to={ROUTES.today} value={isNaN(percent) ? 0 : percent}>
           Hoje
         </TodayItem>
-        <Link to={ROUTES.history}>Histórico</Link>
+        <Link data-test="history-link" to={ROUTES.history}>
+          Histórico
+        </Link>
       </nav>
     </FooterStyle>
   );

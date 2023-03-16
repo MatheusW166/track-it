@@ -55,7 +55,9 @@ export default function HabitForm({
   }
 
   return (
-    <HabitContainerForm onSubmit={handleSubmit}>
+    <HabitContainerForm
+      data-test="habit-create-container"
+      onSubmit={handleSubmit}>
       <CustomInput
         required
         disabled={loading}
@@ -63,6 +65,7 @@ export default function HabitForm({
         value={habitForm.name}
         name="name"
         placeholder="Nome do hábito"
+        data-test="habit-name-input"
       />
       <WeekDaysButtons
         disabled={loading}
@@ -84,10 +87,14 @@ export default function HabitForm({
           disabled={loading}
           onClick={onCancel}
           type="button"
-          secondary>
+          secondary
+          dataTest="habit-create-cancel-btn">
           Cancelar
         </CustomButton>
-        <CustomButton disabled={loading} type="submit">
+        <CustomButton
+          dataTest="habit-create-save-btn"
+          disabled={loading}
+          type="submit">
           Salvar
         </CustomButton>
       </div>

@@ -5,7 +5,7 @@ import { ProgressContainer } from "./styled";
 
 export default function TodayItem({ value = 0.0, children, to }) {
   return (
-    <Link to={to}>
+    <Link data-test="today-link" to={to}>
       <ProgressContainer>
         <p>{children}</p>
         <CircularProgressbar

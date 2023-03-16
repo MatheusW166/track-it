@@ -7,7 +7,7 @@ export default function Header() {
   const user = useContext(UserContext);
 
   return (
-    <HeaderStyle>
+    <HeaderStyle data-test="header">
       <h1>TrackIt</h1>
       <UserAvatar src={user.image} />
     </HeaderStyle>

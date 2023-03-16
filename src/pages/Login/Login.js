@@ -11,7 +11,7 @@ export default function LogIn({ setUser }) {
 
   function onSuccess(user) {
     setUser(user);
-    navigate(ROUTES.habits);
+    navigate(ROUTES.today);
   }
 
   function onError(err) {

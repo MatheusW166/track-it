@@ -42,6 +42,7 @@ export default function SignUp() {
           name="email"
           type="email"
           placeholder="email"
+          data-test="email-input"
         />
         <CustomInput
           disabled={loading}
@@ -49,6 +50,7 @@ export default function SignUp() {
           name="password"
           type="password"
           placeholder="senha"
+          data-test="password-input"
         />
         <CustomInput
           disabled={loading}
@@ -56,6 +58,7 @@ export default function SignUp() {
           name="name"
           type="text"
           placeholder="nome"
+          data-test="user-name-input"
         />
         <CustomInput
           disabled={loading}
@@ -63,13 +66,16 @@ export default function SignUp() {
           name="photo"
           type="url"
           placeholder="foto"
+          data-test="user-image-input"
         />
-        <CustomButton disabled={loading} type="submit">
+        <CustomButton dataTest="signup-btn" disabled={loading} type="submit">
           Cadastrar
         </CustomButton>
       </CustomForm>
       <p>
-        <Link to={ROUTES.login}>Já tem uma conta? Faça login!</Link>
+        <Link data-test="login-link" to={ROUTES.login}>
+          Já tem uma conta? Faça login!
+        </Link>
       </p>
     </RegisterContainer>
   );

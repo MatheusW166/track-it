@@ -28,9 +28,9 @@ export default function Habit({ name, days, id, onSuccessDelete }) {
   }
 
   return (
-    <HabitContainer>
-      <BsTrash onClick={handleDelete} />
-      <h3>{name}</h3>
+    <HabitContainer data-test="habit-container">
+      <BsTrash data-test="habit-delete-btn" onClick={handleDelete} />
+      <h3 data-test="habit-name">{name}</h3>
       <WeekDaysButtons days={days} />
     </HabitContainer>
   );
