@@ -20,6 +20,7 @@ export default function Today({ setToday }) {
   const { today, loading, refreshToday } = useListToday({
     token: user?.token,
     onSuccess: setToday,
+    loadOnRefresh: false,
   });
 
   const tasksDone = today?.filter((t) => t.done);

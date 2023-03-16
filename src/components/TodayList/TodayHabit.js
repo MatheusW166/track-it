@@ -1,7 +1,7 @@
 import { TodayHabitStyle } from "./styled";
 import { BsCheckLg } from "react-icons/bs";
 import { useMarkHabit } from "../../hooks/trackItApiHooks";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import UserContext from "../../context/user";
 
 export default function TodayHabit({
@@ -14,13 +14,15 @@ export default function TodayHabit({
 }) {
   const user = useContext(UserContext);
   const { markHabit } = useMarkHabit();
+  const [isDone, setIsDone] = useState(done);
 
   function onSuccess() {
     refreshToday();
   }
 
   function handleMarkHabit() {
-    markHabit({ done, id, token: user?.token }, onSuccess);
+    setIsDone(!isDone);
+    markHabit({ done: isDone, id, token: user?.token }, onSuccess);
   }
 
   function daysPhrase(days) {
@@ -35,7 +37,7 @@ export default function TodayHabit({
     <TodayHabitStyle
       data-test="today-habit-container"
       record={currentSequence === highestSequence && currentSequence !== 0}
-      done={done}
+      done={isDone}
       key={id}>
       <div className="info">
         <h3 data-test="today-habit-name">{name}</h3>

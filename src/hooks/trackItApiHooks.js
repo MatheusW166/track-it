@@ -142,7 +142,7 @@ function useDeleteHabit() {
   return { loading, error, deleteHabit };
 }
 
-function useListToday({ token, onSuccess, onError }) {
+function useListToday({ token, onSuccess, onError, loadOnRefresh = true }) {
   const [today, setToday] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -151,7 +151,9 @@ function useListToday({ token, onSuccess, onError }) {
     if (!token) {
       return;
     }
-    setLoading(true);
+    if (loadOnRefresh) {
+      setLoading(true);
+    }
     trackItApi
       .listToday({ token })
       .then((data) => {
@@ -168,7 +170,7 @@ function useListToday({ token, onSuccess, onError }) {
         }
       })
       .finally(() => setLoading(false));
-  }, [token, onSuccess, onError]);
+  }, [token, onSuccess, onError, loadOnRefresh]);
 
   useEffect(() => {
     refreshToday();
