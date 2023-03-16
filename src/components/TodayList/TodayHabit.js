@@ -33,16 +33,24 @@ export default function TodayHabit({
 
   return (
     <TodayHabitStyle
+      data-test="today-habit-container"
       record={currentSequence === highestSequence && done}
       done={done}
       key={id}>
       <div className="info">
-        <h3>{name}</h3>
-        <p>Sequência de dias: {daysPhrase(currentSequence)}</p>
-        <p>Seu recorde: {daysPhrase(highestSequence)}</p>
+        <h3 data-test="today-habit-name">{name}</h3>
+        <p data-test="today-habit-sequence">
+          Sequência de dias: {daysPhrase(currentSequence)}
+        </p>
+        <p data-test="today-habit-record">
+          Seu recorde: {daysPhrase(highestSequence)}
+        </p>
       </div>
-      <div className="check">
-        <BsCheckLg onClick={handleMarkHabit} />
+      <div
+        data-test="today-habit-check-btn"
+        onClick={handleMarkHabit}
+        className="check">
+        <BsCheckLg />
       </div>
     </TodayHabitStyle>
   );

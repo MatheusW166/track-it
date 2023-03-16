@@ -35,10 +35,10 @@ export default function Today({ setToday }) {
     <PageContainer percent={percent}>
       <div className="title">
         <div>
-          <h2>
+          <h2 data-test="today">
             {weekdays[dayjs().day()]}, {dayjs().format("DD/MM")}
           </h2>
-          {!loading && <h3>{subtitle}</h3>}
+          {<h3 data-test="today-counter">{subtitle}</h3>}
         </div>
       </div>
       <TodayList refreshToday={refreshToday} loading={loading} today={today} />
