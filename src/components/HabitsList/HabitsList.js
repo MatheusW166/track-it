@@ -2,7 +2,11 @@ import { HabitsListContainer } from "./styled";
 import Loader from "../Loader/Loader";
 import Habit from "./Habit";
 
-export default function HabitsList({ habits, refreshHabits, loading = false }) {
+export default function HabitsList({
+  habits,
+  onSuccessDelete,
+  loading = false,
+}) {
   if (habits?.length === 0 && !loading) {
     return (
       <p>
@@ -19,7 +23,7 @@ export default function HabitsList({ habits, refreshHabits, loading = false }) {
       ) : (
         habits.map((h) => (
           <Habit
-            onDelete={refreshHabits}
+            onSuccessDelete={onSuccessDelete}
             key={h.id}
             name={h.name}
             days={h.days}

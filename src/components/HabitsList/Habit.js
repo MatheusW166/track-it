@@ -6,7 +6,7 @@ import { useDeleteHabit } from "../../hooks/trackItApiHooks";
 import { useContext } from "react";
 import UserContext from "../../context/user";
 
-export default function Habit({ name, days, id, onDelete }) {
+export default function Habit({ name, days, id, onSuccessDelete }) {
   const { deleteHabit } = useDeleteHabit();
   const user = useContext(UserContext);
 
@@ -15,8 +15,8 @@ export default function Habit({ name, days, id, onDelete }) {
   }
 
   function onSuccess() {
-    if (onDelete) {
-      onDelete();
+    if (onSuccessDelete) {
+      onSuccessDelete();
     }
   }
 

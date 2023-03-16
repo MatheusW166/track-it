@@ -7,6 +7,9 @@ const THEME = {
   accentVariant: "#126BA5",
   textPrimary: "#666666",
   textSecondary: "#DBDBDB",
+  subtitle: "#BABABA",
+  taskUndone: "#E7E7E7",
+  taskDone: "#8FC549",
   input: {
     enabled: {
       text: "#666666",

@@ -55,7 +55,7 @@ function useSignUp() {
   return { response, loading, error, signUp };
 }
 
-function useListHabits({ token }) {
+function useListHabits({ token, onSuccess, onError }) {
   const [habits, setHabits] = useState();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState();
@@ -67,10 +67,21 @@ function useListHabits({ token }) {
     setLoading(true);
     trackItApi
       .listHabits({ token })
-      .then((data) => setHabits(data.reverse()))
-      .catch(setError)
+      .then((data) => {
+        data = data.reverse();
+        setHabits(data);
+        if (onSuccess) {
+          onSuccess(data);
+        }
+      })
+      .catch((err) => {
+        setError(err);
+        if (onError) {
+          onError(err);
+        }
+      })
       .finally(() => setLoading(false));
-  }, [token]);
+  }, [token, onSuccess, onError]);
 
   useEffect(() => {
     refreshHabits();
@@ -131,4 +142,74 @@ function useDeleteHabit() {
   return { loading, error, deleteHabit };
 }
 
-export { useLogin, useSignUp, useListHabits, useCreateHabit, useDeleteHabit };
+function useListToday({ token, onSuccess, onError }) {
+  const [today, setToday] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
+
+  const refreshToday = useCallback(() => {
+    if (!token) {
+      return;
+    }
+    setLoading(true);
+    trackItApi
+      .listToday({ token })
+      .then((data) => {
+        data = data.reverse();
+        setToday(data);
+        if (onSuccess) {
+          onSuccess(data);
+        }
+      })
+      .catch((err) => {
+        setError(err);
+        if (onError) {
+          onError(err);
+        }
+      })
+      .finally(() => setLoading(false));
+  }, [token, onSuccess, onError]);
+
+  useEffect(() => {
+    refreshToday();
+  }, [refreshToday]);
+
+  return { today, loading, error, setToday, refreshToday };
+}
+
+function useMarkHabit() {
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState();
+
+  const markHabit = ({ done, id, token }, onSuccess, onError) => {
+    setLoading(true);
+    const promise = !done
+      ? trackItApi.markHabitDone
+      : trackItApi.markHabitUndone;
+    promise({ token, id })
+      .then((data) => {
+        if (onSuccess) {
+          onSuccess(data);
+        }
+      })
+      .catch((err) => {
+        setError(err);
+        if (onError) {
+          onError(err);
+        }
+      })
+      .finally(() => setLoading(false));
+  };
+
+  return { loading, error, markHabit };
+}
+
+export {
+  useLogin,
+  useSignUp,
+  useListHabits,
+  useCreateHabit,
+  useDeleteHabit,
+  useListToday,
+  useMarkHabit,
+};

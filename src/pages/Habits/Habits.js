@@ -8,7 +8,7 @@ import UserContext from "../../context/user";
 
 const defaultForm = { name: "", days: [] };
 
-export default function Habits() {
+export default function Habits({ refreshToday }) {
   const user = useContext(UserContext);
   const [habitForm, setHabitForm] = useState(defaultForm);
   const [showRegisterHabit, setShowRegisterHabit] = useState(false);
@@ -26,6 +26,12 @@ export default function Habits() {
     setHabitForm(defaultForm);
     setShowRegisterHabit(false);
     refreshHabits();
+    refreshToday();
+  }
+
+  function onSuccessDelete() {
+    refreshHabits();
+    refreshToday();
   }
 
   return (
@@ -47,7 +53,7 @@ export default function Habits() {
       )}
       <HabitsList
         loading={loading}
-        refreshHabits={refreshHabits}
+        onSuccessDelete={onSuccessDelete}
         habits={habits}
       />
     </PageContainer>

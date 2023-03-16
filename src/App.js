@@ -6,6 +6,8 @@ import { BrowserRouter } from "react-router-dom";
 import MyRoutes from "./routes";
 import { useState } from "react";
 import UserContext from "./context/user";
+import TodayContext from "./context/today";
+import { useListToday } from "./hooks/trackItApiHooks";
 
 function App() {
   const [user, setUser] = useState({
@@ -18,17 +20,26 @@ function App() {
     token:
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ODM1MCwiaWF0IjoxNjc4OTI5Nzk4fQ.E4S83sz2w2jJFNT4RZQdNWTy_OLBvbchhnkXGuMcjqE",
   });
+  const { today, setToday, refreshToday } = useListToday({
+    token: user?.token,
+  });
 
   return (
-    <UserContext.Provider value={user}>
-      <ThemeProvider theme={THEME}>
-        <ResetStyle />
-        <GlobalStyle />
-        <BrowserRouter>
-          <MyRoutes setUser={setUser} />
-        </BrowserRouter>
-      </ThemeProvider>
-    </UserContext.Provider>
+    <TodayContext.Provider value={today}>
+      <UserContext.Provider value={user}>
+        <ThemeProvider theme={THEME}>
+          <ResetStyle />
+          <GlobalStyle />
+          <BrowserRouter>
+            <MyRoutes
+              refreshToday={refreshToday}
+              setToday={setToday}
+              setUser={setUser}
+            />
+          </BrowserRouter>
+        </ThemeProvider>
+      </UserContext.Provider>
+    </TodayContext.Provider>
   );
 }
 

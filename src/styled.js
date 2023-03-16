@@ -55,7 +55,7 @@ const PageContainer = styled.main`
   display: flex;
   flex-direction: column;
 
-  p {
+  & > p {
     margin-top: 28px;
     font-size: 18px;
   }
@@ -73,6 +73,16 @@ const PageContainer = styled.main`
       width: 40px;
       height: 35px;
       font-size: 26px;
+    }
+    div {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      h3 {
+        font-weight: 400;
+        color: ${({ theme, percent }) =>
+          percent === 0 ? theme.subtitle : theme.taskDone};
+      }
     }
   }
 `;
