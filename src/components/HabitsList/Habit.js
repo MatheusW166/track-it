@@ -11,7 +11,7 @@ export default function Habit({ name, days, id, onDelete }) {
   const user = useContext(UserContext);
 
   function onError(err) {
-    alert(err?.response?.message || "Não foi possível deletar o hábito.");
+    alert(err?.response?.data?.message || "Não foi possível deletar o hábito.");
   }
 
   function onSuccess() {

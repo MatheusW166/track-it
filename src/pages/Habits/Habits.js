@@ -17,7 +17,8 @@ export default function Habits() {
   });
 
   function onError(err) {
-    const errorMessage = err?.response?.message;
+    console.log(err);
+    const errorMessage = err?.response?.data?.message;
     alert(errorMessage || "Não foi possível salvar o hábito.");
   }
 
