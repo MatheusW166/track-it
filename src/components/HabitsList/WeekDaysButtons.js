@@ -1,13 +1,13 @@
 import { WeekDaysContainer, WeekDayCheckLabel } from "./styled";
 
 const weekdays = {
-  1: "D",
-  2: "S",
-  3: "T",
+  0: "D",
+  1: "S",
+  2: "T",
+  3: "Q",
   4: "Q",
-  5: "Q",
+  5: "S",
   6: "S",
-  7: "S",
 };
 
 export default function WeekDaysButtons({
