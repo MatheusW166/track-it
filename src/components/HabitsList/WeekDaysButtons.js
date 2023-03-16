@@ -20,7 +20,7 @@ export default function WeekDaysButtons({
     <WeekDaysContainer>
       {Object.keys(weekdays).map((d) => {
         return (
-          <WeekDayCheckLabel data-test="habit-day" key={d}>
+          <WeekDayCheckLabel disabled={disabled} data-test="habit-day" key={d}>
             {weekdays[Number(d)]}
             <input
               disabled={disabled}
