@@ -81,7 +81,7 @@ const PageContainer = styled.main`
       h3 {
         font-weight: 400;
         color: ${({ theme, percent }) =>
-          percent === 0 ? theme.subtitle : theme.taskDone};
+          !percent ? theme.subtitle : theme.taskDone};
       }
     }
   }
