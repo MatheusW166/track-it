@@ -14,7 +14,7 @@ export default function HabitsList({ habits }) {
   return (
     <HabitsListContainer>
       {habits.map((h) => (
-        <Habit key={h.id} name={h.name} days={h.days} />
+        <Habit key={h.id} name={h.name} days={h.days} id={h.id} />
       ))}
     </HabitsListContainer>
   );

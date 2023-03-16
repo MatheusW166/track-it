@@ -40,6 +40,20 @@ export default function HabitForm({
     createHabit({ name, days, token: user.token }, onSuccess, onError);
   }
 
+  function addDay(day) {
+    setHabitForm({
+      ...habitForm,
+      days: [...habitForm.days, day],
+    });
+  }
+
+  function removeDay(day) {
+    setHabitForm({
+      ...habitForm,
+      days: [...habitForm.days.filter((d) => d !== day)],
+    });
+  }
+
   return (
     <HabitContainerForm onSubmit={handleSubmit}>
       <CustomInput
@@ -54,16 +68,11 @@ export default function HabitForm({
         disabled={loading}
         onChange={(e) => {
           const value = Number(e.target.value);
-          if (e.target.checked) {
-            setHabitForm({
-              ...habitForm,
-              days: [...habitForm.days, value],
-            });
+          const isChecked = e.target.checked;
+          if (isChecked) {
+            addDay(value);
           } else {
-            setHabitForm({
-              ...habitForm,
-              days: [...habitForm.days.filter((d) => d !== value)],
-            });
+            removeDay(value);
           }
         }}
         readOnly={false}
