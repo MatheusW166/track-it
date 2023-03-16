@@ -9,6 +9,7 @@ const HabitsListContainer = styled.div`
 `;
 
 const HabitContainerForm = styled.form`
+  
   max-width: 500px;
   background: ${({ theme }) => theme.bg};
   border-radius: 5px;
@@ -34,6 +35,10 @@ const HabitContainerForm = styled.form`
     font-size: 16px;
     height: 35px;
     padding: 0 16px;
+  }
+
+  button {
+    min-width: 90px;
   }
 `;
 

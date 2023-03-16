@@ -72,6 +72,14 @@ const PageContainer = styled.main`
       font-size: 26px;
     }
   }
+
+  & > .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background-color: #000;
+    transform: translate(-50%, -50%);
+  }
 `;
 
 export { PageContainer, CustomForm, CustomInput, RegisterContainer };

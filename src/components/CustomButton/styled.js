@@ -10,6 +10,7 @@ const CustomButtonStyle = styled.button`
   cursor: pointer;
   font-size: 20px;
   max-width: 400px;
+  position: relative;
   &:disabled {
     background: ${({ theme }) => theme.accentOpacity};
   }

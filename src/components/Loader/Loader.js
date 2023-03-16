@@ -1,5 +1,7 @@
 import LoaderContainer from "./styled";
 
-export default function Loader() {
-  return <LoaderContainer className="loader"></LoaderContainer>;
+export default function Loader({ isDarker }) {
+  return (
+    <LoaderContainer isDarker={isDarker} className="loader"></LoaderContainer>
+  );
 }
