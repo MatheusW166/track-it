@@ -4,13 +4,21 @@ import { ROUTES } from "../../routes";
 import CustomButton from "../../components/CustomButton/CustomButton";
 import { RegisterContainer, CustomForm, CustomInput } from "../../styled";
 import { useLogin } from "../../hooks/trackItApiHooks";
+import { useContext } from "react";
+import UserContext from "../../context/user";
 
-export default function LogIn({ setUser }) {
+export default function LogIn() {
   const { loading, login } = useLogin();
+  const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
+
+  function persistUserData(user) {
+    localStorage.setItem("current", JSON.stringify(user));
+  }
 
   function onSuccess(user) {
     setUser(user);
+    persistUserData(user);
     navigate(ROUTES.today);
   }
 

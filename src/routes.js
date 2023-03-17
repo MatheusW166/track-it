@@ -6,6 +6,7 @@ import History from "./pages/History/History";
 import LogIn from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import Today from "./pages/Today/Today";
+import { useSession } from "./hooks/sessionHooks";
 
 const ROUTES = {
   login: "/",
@@ -17,8 +18,10 @@ const ROUTES = {
 
 export { ROUTES };
 
-export default function MyRoutes({ setUser, setToday, refreshToday }) {
+export default function MyRoutes() {
   const { pathname } = useLocation();
+
+  useSession();
 
   function isLoginOrSignUp() {
     return pathname === ROUTES.login || pathname === ROUTES.signUp;
@@ -28,13 +31,10 @@ export default function MyRoutes({ setUser, setToday, refreshToday }) {
     <>
       {!isLoginOrSignUp() && <Header />}
       <Routes>
-        <Route path={ROUTES.login} element={<LogIn setUser={setUser} />} />
+        <Route path={ROUTES.login} element={<LogIn />} />
         <Route path={ROUTES.signUp} element={<SignUp />} />
-        <Route
-          path={ROUTES.habits}
-          element={<Habits refreshToday={refreshToday} />}
-        />
-        <Route path={ROUTES.today} element={<Today setToday={setToday} />} />
+        <Route path={ROUTES.habits} element={<Habits />} />
+        <Route path={ROUTES.today} element={<Today />} />
         <Route path={ROUTES.history} element={<History />} />
       </Routes>
       {!isLoginOrSignUp() && <Footer />}

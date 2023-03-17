@@ -3,6 +3,7 @@ import { BsCheckLg } from "react-icons/bs";
 import { useMarkHabit } from "../../hooks/trackItApiHooks";
 import { useContext, useState } from "react";
 import UserContext from "../../context/user";
+import TodayContext from "../../context/today";
 
 export default function TodayHabit({
   id,
@@ -10,9 +11,9 @@ export default function TodayHabit({
   done,
   currentSequence,
   highestSequence,
-  refreshToday,
 }) {
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
+  const { refreshToday } = useContext(TodayContext);
   const { markHabit } = useMarkHabit();
   const [isDone, setIsDone] = useState(done);
 

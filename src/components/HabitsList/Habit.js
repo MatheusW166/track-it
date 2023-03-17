@@ -8,7 +8,7 @@ import UserContext from "../../context/user";
 
 export default function Habit({ name, days, id, onSuccessDelete }) {
   const { deleteHabit } = useDeleteHabit();
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   function onError(err) {
     alert(err?.response?.data?.message || "Não foi possível deletar o hábito.");

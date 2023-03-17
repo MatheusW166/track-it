@@ -1,8 +1,11 @@
 import { TodayListStyle } from "./styled";
 import TodayHabit from "./TodayHabit";
 import Loader from "../Loader/Loader";
+import { useContext } from "react";
+import TodayContext from "../../context/today";
 
-export default function TodayList({ refreshToday, today, loading }) {
+export default function TodayList() {
+  const { today, loading } = useContext(TodayContext);
   return (
     <TodayListStyle>
       {loading ? (
@@ -16,7 +19,6 @@ export default function TodayList({ refreshToday, today, loading }) {
             currentSequence={t.currentSequence}
             highestSequence={t.highestSequence}
             done={t.done}
-            refreshToday={refreshToday}
           />
         ))
       )}

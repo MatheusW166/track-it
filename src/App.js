@@ -11,22 +11,19 @@ import { useListToday } from "./hooks/trackItApiHooks";
 
 function App() {
   const [user, setUser] = useState();
-  const { today, setToday, refreshToday } = useListToday({
+  const { today, setToday, refreshToday, error, loading } = useListToday({
     token: user?.token,
   });
 
   return (
-    <TodayContext.Provider value={today}>
-      <UserContext.Provider value={user}>
+    <TodayContext.Provider
+      value={{ today, setToday, refreshToday, error, loading }}>
+      <UserContext.Provider value={{ user, setUser }}>
         <ThemeProvider theme={THEME}>
           <ResetStyle />
           <GlobalStyle />
           <BrowserRouter>
-            <MyRoutes
-              refreshToday={refreshToday}
-              setToday={setToday}
-              setUser={setUser}
-            />
+            <MyRoutes />
           </BrowserRouter>
         </ThemeProvider>
       </UserContext.Provider>

@@ -6,7 +6,7 @@ function useLogin() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState();
 
-  const login = ({ email, password }, onSuccess, onError) => {
+  const login = useCallback(({ email, password }, onSuccess, onError) => {
     setLoading(true);
     trackItApi
       .logIn({ email, password })
@@ -23,7 +23,7 @@ function useLogin() {
         }
       })
       .finally(() => setLoading(false));
-  };
+  }, []);
 
   return { user, loading, error, login };
 }

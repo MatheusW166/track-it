@@ -6,7 +6,7 @@ import { useContext } from "react";
 import TodayContext from "../../context/today";
 
 export default function Footer() {
-  const today = useContext(TodayContext);
+  const { today } = useContext(TodayContext);
 
   const tasksDone = today?.filter((t) => t.done);
   const percent = tasksDone?.length / today?.length;

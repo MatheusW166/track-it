@@ -5,11 +5,13 @@ import HabitsList from "../../components/HabitsList/HabitsList";
 import HabitForm from "../../components/HabitsList/HabitForm";
 import { useListHabits } from "../../hooks/trackItApiHooks";
 import UserContext from "../../context/user";
+import TodayContext from "../../context/today";
 
 const defaultForm = { name: "", days: [] };
 
-export default function Habits({ refreshToday }) {
-  const user = useContext(UserContext);
+export default function Habits() {
+  const { user } = useContext(UserContext);
+  const { refreshToday } = useContext(TodayContext);
   const [habitForm, setHabitForm] = useState(defaultForm);
   const [showRegisterHabit, setShowRegisterHabit] = useState(false);
   const { habits, loading, refreshHabits } = useListHabits({

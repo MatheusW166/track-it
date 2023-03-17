@@ -1,9 +1,8 @@
 import { PageContainer } from "../../styled";
 import dayjs from "dayjs";
-import { useListToday } from "../../hooks/trackItApiHooks";
 import { useContext } from "react";
-import UserContext from "../../context/user";
 import TodayList from "../../components/TodayList/TodayList";
+import TodayContext from "../../context/today";
 
 const weekdays = [
   "Domingo",
@@ -15,13 +14,8 @@ const weekdays = [
   "Sábado",
 ];
 
-export default function Today({ setToday }) {
-  const user = useContext(UserContext);
-  const { today, loading, refreshToday } = useListToday({
-    token: user?.token,
-    onSuccess: setToday,
-    loadOnRefresh: false,
-  });
+export default function Today() {
+  const { today } = useContext(TodayContext);
 
   const tasksDone = today?.filter((t) => t.done);
   let percent = tasksDone?.length / today?.length;
@@ -42,7 +36,7 @@ export default function Today({ setToday }) {
           {<h3 data-test="today-counter">{subtitle}</h3>}
         </div>
       </div>
-      <TodayList refreshToday={refreshToday} loading={loading} today={today} />
+      <TodayList />
     </PageContainer>
   );
 }

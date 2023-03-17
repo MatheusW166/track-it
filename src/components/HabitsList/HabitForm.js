@@ -14,7 +14,7 @@ export default function HabitForm({
   onCancel,
 }) {
   const { loading, createHabit } = useCreateHabit();
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
 
   function validateDays(days) {
     if (days.length === 0) {
