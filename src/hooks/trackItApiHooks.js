@@ -68,7 +68,6 @@ function useListHabits({ token, onSuccess, onError }) {
     trackItApi
       .listHabits({ token })
       .then((data) => {
-        data = data.reverse();
         setHabits(data);
         if (onSuccess) {
           onSuccess(data);
@@ -157,7 +156,6 @@ function useListToday({ token, onSuccess, onError, loadOnRefresh = true }) {
     trackItApi
       .listToday({ token })
       .then((data) => {
-        data = data.reverse();
         setToday(data);
         if (onSuccess) {
           onSuccess(data);
