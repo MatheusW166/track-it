@@ -36,7 +36,7 @@ export default function TodayHabit({
   return (
     <TodayHabitStyle
       data-test="today-habit-container"
-      record={currentSequence === highestSequence && currentSequence !== 0}
+      record={currentSequence === highestSequence}
       done={isDone}
       key={id}>
       <div className="info">
