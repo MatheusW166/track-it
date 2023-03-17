@@ -5,15 +5,15 @@ import { useContext } from "react";
 import UserContext from "../../context/user";
 import TodayList from "../../components/TodayList/TodayList";
 
-const weekdays = {
-  0: "Domingo",
-  1: "Segunda",
-  2: "Terça",
-  3: "Quarta",
-  4: "Quinta",
-  5: "Sexta",
-  6: "Sábado",
-};
+const weekdays = [
+  "Domingo",
+  "Segunda",
+  "Terça",
+  "Quarta",
+  "Quinta",
+  "Sexta",
+  "Sábado",
+];
 
 export default function Today({ setToday }) {
   const user = useContext(UserContext);

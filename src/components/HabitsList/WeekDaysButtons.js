@@ -1,14 +1,6 @@
 import { WeekDaysContainer, WeekDayCheckLabel } from "./styled";
 
-const weekdays = {
-  0: "D",
-  1: "S",
-  2: "T",
-  3: "Q",
-  4: "Q",
-  5: "S",
-  6: "S",
-};
+const weekdays = ["D", "S", "T", "Q", "Q", "S", "S"];
 
 export default function WeekDaysButtons({
   onChange,
@@ -18,17 +10,20 @@ export default function WeekDaysButtons({
 }) {
   return (
     <WeekDaysContainer>
-      {Object.keys(weekdays).map((d) => {
+      {weekdays.map((day, idx) => {
         return (
-          <WeekDayCheckLabel disabled={disabled} data-test="habit-day" key={d}>
-            {weekdays[Number(d)]}
+          <WeekDayCheckLabel
+            disabled={disabled}
+            data-test="habit-day"
+            key={idx}>
+            {day}
             <input
               disabled={disabled}
               name="day"
               onChange={onChange}
               readOnly={readOnly}
-              value={d}
-              checked={days.includes(Number(d))}
+              value={idx}
+              checked={days.includes(idx)}
               type="checkbox"
             />
           </WeekDayCheckLabel>
