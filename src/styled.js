@@ -55,6 +55,13 @@ const PageContainer = styled.main`
   display: flex;
   flex-direction: column;
 
+  & > .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
   & > p {
     margin-top: 28px;
     font-size: 18px;
@@ -83,6 +90,35 @@ const PageContainer = styled.main`
         color: ${({ theme, percent }) =>
           !percent ? theme.subtitle : theme.taskDone};
       }
+    }
+  }
+
+  .calendar {
+    width: 100%;
+    max-width: 500px;
+    background: ${({ theme }) => theme.bg};
+    border: none;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    margin: 16px auto;
+    text-align: center;
+    padding-top: 12px;
+    font-family: inherit;
+
+    .react-calendar__month-view__weekdays {
+      margin-bottom: 16px;
+      color: #000;
+    }
+
+    .tile {
+      margin-bottom: 8px;
+      border-radius: 100%;
+      aspect-ratio: 1;
+    }
+
+    .sunday {
+      background: red;
     }
   }
 `;

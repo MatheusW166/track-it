@@ -204,6 +204,40 @@ function useMarkHabit() {
   return { loading, error, markHabit };
 }
 
+function useDailyHistory({ token, onSuccess, onError }) {
+  const [history, setHistory] = useState();
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState();
+
+  const refreshHistory = useCallback(() => {
+    if (!token) {
+      return;
+    }
+    setLoading(true);
+    trackItApi
+      .dailyHistory({ token })
+      .then((data) => {
+        setHistory(data);
+        if (onSuccess) {
+          onSuccess(data);
+        }
+      })
+      .catch((err) => {
+        setError(err);
+        if (onError) {
+          onError(err);
+        }
+      })
+      .finally(() => setLoading(false));
+  }, [token, onSuccess, onError]);
+
+  useEffect(() => {
+    refreshHistory();
+  }, [refreshHistory]);
+
+  return { history, loading, error, refreshHistory };
+}
+
 export {
   useLogin,
   useSignUp,
@@ -212,4 +246,5 @@ export {
   useDeleteHabit,
   useListToday,
   useMarkHabit,
+  useDailyHistory,
 };

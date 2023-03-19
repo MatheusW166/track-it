@@ -3,23 +3,21 @@ import { useNavigate } from "react-router-dom";
 import UserContext from "../context/user";
 import { ROUTES } from "../routes";
 import { useLogin } from "./trackItApiHooks";
+import { getCurrentUser } from "../utils/sessionUtils";
 
 function useSession() {
   const { login } = useLogin();
-  const [current] = useState(JSON.parse(localStorage.getItem("current")));
+  const [current] = useState(getCurrentUser());
   const navigate = useNavigate();
   const { setUser, user } = useContext(UserContext);
 
   useEffect(() => {
-    if (user) {
+    if (!current || user) {
       return;
     }
-    if (!current) {
-      return;
-    }
-    console.log("use session");
+    const { email, password } = current;
     login(
-      { email: current.email, password: current.password },
+      { email, password },
       (user) => {
         setUser(user);
         navigate(ROUTES.today);
