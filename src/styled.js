@@ -101,24 +101,55 @@ const PageContainer = styled.main`
     border-radius: 5px;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
       rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    margin: 16px auto;
+    margin: 24px auto;
     text-align: center;
-    padding-top: 12px;
+    padding: 12px;
     font-family: inherit;
 
     .react-calendar__month-view__weekdays {
       margin-bottom: 16px;
-      color: #000;
+      color: ${({ theme }) => theme.textHighContrast};
     }
 
     .tile {
       margin-bottom: 8px;
-      border-radius: 100%;
       aspect-ratio: 1;
+      font-size: 14px;
+      position: relative;
+
+      &:has(.all-done),
+      &:has(.undone) {
+        color: ${({ theme }) => theme.textHighContrast};
+      }
+
+      & > *:first-child {
+        position: relative;
+        z-index: 1;
+      }
     }
 
-    .sunday {
-      background: red;
+    .react-calendar__month-view__days__day--neighboringMonth {
+      opacity: 0.5;
+    }
+
+    .all-done,
+    .undone {
+      width: 80%;
+      height: 80%;
+      border-radius: 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 0;
+    }
+
+    .all-done {
+      background: ${({ theme }) => theme.taskDone};
+    }
+
+    .undone {
+      background: ${({ theme }) => theme.noTaskDone};
     }
   }
 `;

@@ -5,17 +5,32 @@ import { useDailyHistory } from "../../hooks/trackItApiHooks";
 import { useContext } from "react";
 import UserContext from "../../context/user";
 import Loader from "../../components/Loader/Loader";
+import dayjs from "dayjs";
+
+const LOCALE = "pt-BR";
+const TIMEZONE = "UTC";
 
 export default function History() {
   const { user } = useContext(UserContext);
-  const { loading } = useDailyHistory({ token: user?.token });
+  const { history, loading } = useDailyHistory({ token: user?.token });
 
-  function tileDateClassName({ date }) {
-    const tileClasses = ["tile"];
-    if (date.getDay() === 0) {
-      tileClasses.push("sunday");
+  const historyHash = {};
+  history?.forEach((hist) => (historyHash[hist.day] = hist));
+
+  function dateString(date) {
+    return date.toLocaleString(LOCALE, { timeZone: TIMEZONE }).split(",")[0];
+  }
+
+  function tileDateClassContent({ date }) {
+    const dateConverted = dateString(date);
+    const dayHabits = historyHash[dateConverted];
+    if (!dayHabits || dateConverted === dateString(new Date())) {
+      return null;
     }
-    return tileClasses.join(" ");
+    if (dayHabits.habits.some((habit) => !habit.done)) {
+      return <div className="undone"></div>;
+    }
+    return <div className="all-done"></div>;
   }
 
   return (
@@ -27,9 +42,10 @@ export default function History() {
         <Loader isDarker />
       ) : (
         <Calendar
-          tileClassName={tileDateClassName}
+          tileClassName="tile"
+          tileContent={tileDateClassContent}
           className="calendar"
-          value={new Date()}
+          formatDay={(_, date) => dayjs(date).format("DD")}
         />
       )}
     </PageContainer>

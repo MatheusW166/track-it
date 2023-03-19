@@ -10,6 +10,8 @@ const THEME = {
   subtitle: "#BABABA",
   taskUndone: "#E7E7E7",
   taskDone: "#8FC549",
+  noTaskDone: "#f87171",
+  textHighContrast: "#000",
   input: {
     enabled: {
       text: "#666666",
