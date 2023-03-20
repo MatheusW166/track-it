@@ -13,6 +13,19 @@ const HeaderStyle = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  & > div:last-child {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: ${({ theme }) => theme.overAccent};
+    button {
+      line-height: 0;
+      cursor: pointer;
+      font-size: 24px;
+    }
+  }
+
   h1 {
     font-family: "Playball", "cursive";
     color: ${({ theme }) => theme.overAccent};

@@ -12,12 +12,11 @@ function useSession() {
   const { setUser, user } = useContext(UserContext);
 
   useEffect(() => {
-    if (!current || user) {
+    if (user) {
       return;
     }
-    const { email, password } = current;
     login(
-      { email, password },
+      { email: current?.email, password: current?.password },
       (user) => {
         setUser(user);
         navigate(ROUTES.today);
