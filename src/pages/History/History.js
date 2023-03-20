@@ -50,6 +50,7 @@ export default function History() {
         <Loader isDarker />
       ) : (
         <Calendar
+          data-test="calendar"
           tileClassName="tile"
           tileContent={tileDateClassContent}
           className="calendar"
