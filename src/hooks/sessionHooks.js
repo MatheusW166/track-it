@@ -21,8 +21,6 @@ function useSession() {
       return;
     }
 
-    console.log("deu loop?");
-
     login(
       { email: current?.email, password: current?.password },
       (user) => {
