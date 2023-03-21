@@ -2,7 +2,6 @@ const CURRENT = "current";
 
 function logOut() {
   localStorage.removeItem(CURRENT);
-  window.location.reload();
 }
 
 function getCurrentUser() {
