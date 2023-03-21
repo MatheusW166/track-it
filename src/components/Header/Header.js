@@ -3,19 +3,7 @@ import { HeaderStyle } from "./styled";
 import { useContext } from "react";
 import UserContext from "../../context/user";
 import { AiOutlineLogin } from "react-icons/ai";
-import { deleteCurrent } from "../../utils/sessionUtils";
-import { Link } from "react-router-dom";
-import { ROUTES } from "../../routes";
-
-function LogOutButton() {
-  return (
-    <Link to={ROUTES.login} onClick={deleteCurrent}>
-      <button>
-        <AiOutlineLogin />
-      </button>
-    </Link>
-  );
-}
+import { logOut } from "../../utils/sessionUtils";
 
 export default function Header() {
   const { user } = useContext(UserContext);
@@ -24,7 +12,9 @@ export default function Header() {
       <h1>TrackIt</h1>
       <div>
         <UserAvatar src={user?.image} />
-        <LogOutButton />
+        <button onClick={logOut}>
+          <AiOutlineLogin />
+        </button>
       </div>
     </HeaderStyle>
   );

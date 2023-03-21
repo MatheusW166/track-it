@@ -8,10 +8,8 @@ import Loader from "../../components/Loader/Loader";
 import dayjs from "dayjs";
 import { dateToLocaleString } from "../../utils/dateUtils";
 import TodayHabitsModal from "../../components/TodayHabitsModal/TodayHabitsModal";
-import { useRedirectUnlogged } from "../../hooks/sessionHooks";
 
 export default function History() {
-  useRedirectUnlogged();
   const { user } = useContext(UserContext);
   const { history, loading } = useDailyHistory({ token: user?.token });
   const [dateSelected, setDateSelected] = useState();

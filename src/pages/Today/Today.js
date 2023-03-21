@@ -3,7 +3,6 @@ import dayjs from "dayjs";
 import { useContext } from "react";
 import TodayList from "../../components/TodayList/TodayList";
 import TodayContext from "../../context/today";
-import { useRedirectUnlogged } from "../../hooks/sessionHooks";
 
 const weekdays = [
   "Domingo",
@@ -16,7 +15,6 @@ const weekdays = [
 ];
 
 export default function Today() {
-  useRedirectUnlogged();
   const { today } = useContext(TodayContext);
 
   const tasksDone = today?.filter((t) => t.done);
