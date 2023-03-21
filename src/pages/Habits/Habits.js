@@ -6,10 +6,13 @@ import HabitForm from "../../components/HabitsList/HabitForm";
 import { useListHabits } from "../../hooks/trackItApiHooks";
 import UserContext from "../../context/user";
 import TodayContext from "../../context/today";
+import { useRedirectUnlogged } from "../../hooks/sessionHooks";
 
 const defaultForm = { name: "", days: [] };
 
 export default function Habits() {
+  useRedirectUnlogged();
+
   const { user } = useContext(UserContext);
   const { refreshToday } = useContext(TodayContext);
   const [habitForm, setHabitForm] = useState(defaultForm);

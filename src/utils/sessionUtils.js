@@ -1,8 +1,7 @@
 const CURRENT = "current";
 
-function logOut() {
+function deleteCurrent() {
   localStorage.removeItem(CURRENT);
-  window.location.reload();
 }
 
 function getCurrentUser() {
@@ -17,4 +16,4 @@ function setCurrentUser(user) {
   localStorage.setItem(CURRENT, JSON.stringify(user));
 }
 
-export { getCurrentUser, setCurrentUser, logOut };
+export { getCurrentUser, setCurrentUser, deleteCurrent };
