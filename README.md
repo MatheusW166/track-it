@@ -28,7 +28,4 @@ A seguir, estão listadas as principais funcionalidades da aplicação:
 ![Criar hábito](https://github.com/MatheusW166/track-it/blob/main/refs/habitos.png) ![Lista de hábitos](https://github.com/MatheusW166/track-it/blob/main/refs/habitos_lista.png) 
 
 ### Hábitos do dia
-![Hoje](https://github.com/MatheusW166/track-it/blob/main/refs/hoje.png) 
-
-### Histórico de hábitos
-![Histórico](https://github.com/MatheusW166/track-it/blob/main/refs/historico.png)
+![Hoje](https://github.com/MatheusW166/track-it/blob/main/refs/hoje.png)
