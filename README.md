@@ -1,3 +1,5 @@
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://github.com/MatheusW166/track-it/blob/main/LICENCE)
+
 # Track-It
 
 Track-It é uma aplicação web desenvolvida para ajudar os usuários a acompanhar seus hábitos diários, como exercícios físicos, consumo de água, leitura, entre outros. A aplicação permite que os usuários criem seus próprios hábitos personalizados e acompanhem seu progresso ao longo do tempo.
